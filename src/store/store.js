@@ -24,7 +24,9 @@ export const store = new Vuex.Store({
 
         count: 0,
         cartItemCount: 0,
-        cartItems: []
+        cartItems: [],
+        totalPrice: 0,
+        todos: [{ id: 1, name: "Shopping at 7", done: true }, { id: 2, name: "Learn Vue", done: true }, { id: 1, name: "Gaming", done: false }]
     },
     mutations: {
         increment(state) {
@@ -55,6 +57,7 @@ export const store = new Vuex.Store({
                 let bool = state.cartItems.some(
                     i => i.id == payload.id
                 );
+                console.log('bool', bool)
                 if (bool) {
                     let index = state.cartItems.findIndex(
                         el => el.id == payload.id
@@ -63,10 +66,12 @@ export const store = new Vuex.Store({
                     state.cartItems[index]["quantity"] === 0
                         ? (state.cartItems[index]["quantity"] = 0)
                         : (state.cartItems[index]["quantity"] -= 1);
+                    if (state.cartItems[index]["quantity"] === 0)
+                        state.cartItems.splice(index, 1)
+                    if (state.cartItemCount !== 0)
+                        state.cartItemCount--
                 }
             }
-            if (state.cartItemCount !== 0)
-                state.cartItemCount--
         }
     },
     actions: {
@@ -75,6 +80,16 @@ export const store = new Vuex.Store({
         },
         removeItem: (context, payload) => {
             context.commit('removeItem', payload)
+        },
+        increment: (context, payload) => {
+            setTimeout(() => {
+                context.commit('increment')
+            }, 5000)
+        },
+    },
+    getters: {
+        doneTodos: state => {
+            return state.todos.filter(todo => todo.done)
         }
     }
 })

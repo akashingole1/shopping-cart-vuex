@@ -1,25 +1,21 @@
 <template>
   <footer>
-    <div
-      style="min-height: 60px; background: lightgrey; display: flex;justify-content: space-between;
-        padding-top: 17px
-        "
-    >
-      <div style="margin-left: 10px">
-        <h5 style="font-weight: 600;">Sweet Dish</h5>
+    <div class="footer">
+      <div style="margin-left: 20px">
+        <h4 class="fw-600">Sweet Dish</h4>
       </div>
-      <div style="display: flex; width: 500px; justify-content: space-evenly">
+      <div class="about-us">
         <div>
-          <h5 style="font-weight: 600;">About Us</h5>
+          <h5 class="fw-600">About Us</h5>
         </div>
         <div>
-          <h5 style="font-weight: 600;">T & C</h5>
+          <h5 class="fw-600">T & C</h5>
         </div>
         <div>
-          <h5 style="font-weight: 600;">Privacy Policy</h5>
+          <h5 class="fw-600">Privacy Policy</h5>
         </div>
         <div>
-          <h5 style="font-weight: 600;">Contect Us</h5>
+          <h5 class="fw-600">Contect Us</h5>
         </div>
       </div>
     </div>
@@ -34,4 +30,19 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.footer {
+  min-height: 60px;
+  background: lightgrey;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 17px;
+}
+.about-us {
+  display: flex;
+  width: 500px;
+  justify-content: space-evenly;
+}
+.fw-600 {
+  font-weight: 600;
+}
 </style>
